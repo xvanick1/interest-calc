@@ -40,3 +40,50 @@ a {
     color-scheme: dark;
   }
 }
+
+#container {
+  display: flex;
+  flex-direction: row;
+  min-height: 60vh;
+
+  #inputForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    background-color: red;
+    min-width: 30vw;
+    min-height: inherit;
+    justify-content: space-evenly;
+
+    input {
+      color: var(--button-primary-hover);
+      font-size: 1.5rem;
+      height: 2rem;
+      margin: 0 30px;
+      border-radius: 5px;
+    }
+
+    #result {
+      background-color: var(--foreground);
+      border-radius: 5px;
+      margin: 0 30px;
+      height: 40px;
+      font-size: 30px;
+      padding: 0 15px;
+      color: var(--background);
+
+    }
+
+  }
+
+  #graph {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-grow: 2;
+    background-color: blue;
+    min-width: 50vw;
+    min-height: inherit;
+  }
+}
