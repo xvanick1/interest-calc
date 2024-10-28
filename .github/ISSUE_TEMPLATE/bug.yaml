@@ -1,0 +1,23 @@
+name: Bug
+description: Report a bug in the interest calculator
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: severity
+    attributes:
+      description: "Please select severity of the bug."
+      label: Bug severity
+      options:
+        - major
+        - minor
+        - trivial
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      description: "Please add information about the bug."
+      label: Bug description
+    validations:
+      required: true

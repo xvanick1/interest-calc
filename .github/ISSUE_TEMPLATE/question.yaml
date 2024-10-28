@@ -1,0 +1,12 @@
+name: Question
+description: "Ask me a generic question about the app. This is not meant for suggestions."
+title: "Question: "
+labels: ["question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      description: "Fill in your question."
+      label: Question
+    validations:
+      required: true

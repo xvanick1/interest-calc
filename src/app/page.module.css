@@ -93,15 +93,21 @@ a.secondary {
 }
 
 .footer {
+  font-size: 15px;
   grid-row-start: 3;
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 2px;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .footer a {
-  display: flex;
   align-items: center;
-  gap: 8px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .footer img {
@@ -121,8 +127,7 @@ a.secondary {
   }
 
   .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    color: blue;
   }
 }
 

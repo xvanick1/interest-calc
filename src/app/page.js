@@ -2,6 +2,7 @@
 
 import styles from "./page.module.css";
 import {useState} from "react";
+import {Link} from "@nextui-org/link";
 
 export default function Home() {
   let [finalWealth, setFinalWealth] = useState(null);
@@ -43,7 +44,8 @@ export default function Home() {
         </div>
       </main>
       <footer className={styles.footer}>
-        Created by J.
+        <p>Created by J.</p>
+        <p>Did you experience any weird behavior? <Link isExternal href="https://github.com/xvanick1/interest-calc/issues"> Let me know.</Link></p>
       </footer>
     </div>
   );
