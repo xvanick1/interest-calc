@@ -6,14 +6,23 @@
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
 
+  min-height: inherit;
+  min-width: inherit;
+
   display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 20px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
+  grid-template-rows: 9fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'main'
+    'footer';
+
+  .main {
+    grid-area: main;
+  }
+
+  .footer {
+    grid-area: footer;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,57 +37,83 @@
 }
 
 .main {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'title'
+    'content';
+
+  margin: 6% 12%;
+}
+
+
+.container {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'form graph graph';
+
+  .inputForm {
+    grid-area: form;
+  }
+
+  .graph {
+    grid-area: graph;
+  }
+}
+
+.inputForm {
+  margin: 2rem 3rem 1rem 0rem;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr) 1.5fr;
+  grid-template-columns: 1fr;
+  row-gap: 5%;
+
+  .input {
+    background-color: #3f3f46;
+    border: 0 solid #e5e7eb;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    max-height: 3.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border-radius: 12px;
+    color: var(--button-primary-hover);
+  }
+
+  .result {
+    font-size: 60px;
+    font-weight: bold;
+    color: #ffffff;
+    align-self: end;
+    justify-self: end;
+    margin-right: 1rem;
+  }
+}
+
+.graph {
+  margin: 0rem 1rem 1rem 1rem;
+
   display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 2;
+  border: 1px solid var(--foreground);
+  background-color: var(--button-secondary-hover);
+  border-radius: 5px;
+  min-width: 50vw;
+  min-height: inherit;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+
+  .h1 {
+    color: #383838;
+    text-decoration: #1a1a1a;
+  }
 }
 
 a.primary {
@@ -94,14 +129,11 @@ a.secondary {
 
 .footer {
   font-size: 15px;
-  grid-row-start: 3;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  flex-wrap: nowrap;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 2rem;
+  align-items: center;
 }
 
 .footer a {
@@ -110,9 +142,6 @@ a.secondary {
   text-underline-offset: 4px;
 }
 
-.footer img {
-  flex-shrink: 0;
-}
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -127,48 +156,6 @@ a.secondary {
   }
 
   .footer a:hover {
-    color: blue;
+    color: var(--button-primary-hover);
   }
 }
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-}
-

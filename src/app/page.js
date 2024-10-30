@@ -31,16 +31,54 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1>Let's get rich!</h1>
-        <div id="container">
-          <div id="inputForm">
-            <input id="deposit" type="string" placeholder="Initial Deposit Value" value={deposit} onChange={handleValueChange}/>
-            <input id="apy" type="string" placeholder="Yearly Interest Rate (APY)" value={apy} onChange={handleValueChange}/>
-            <input id="compound_freq_days" type="string" placeholder="How often in year is interest paid" value={compound_freq_days} onChange={handleValueChange}/>
-            <input id="deposit_duration_days" type="string" placeholder="Duration of deposit" value={deposit_duration_days} onChange={handleValueChange}/>
-            <span id="result">{finalWealth !== null ? finalWealth : "0"}</span>
+        <div className={styles.container}>
+          <div className={styles.inputForm}>
+            <input
+                className={styles.input}
+                id="deposit"
+                type="number"
+                placeholder="Initial deposit:"
+                inputMode="decimal"
+                min={1}
+                value={deposit}
+                step={0.01}
+                required
+                onChange={handleValueChange}/>
+            <input className={styles.input}
+                   id="apy"
+                   type="number"
+                   placeholder="Yearly Interest Rate (APY):"
+                   inputMode={"numeric"}
+                   min={0}
+                   value={apy}
+                   step={0.01}
+                   required
+                   onChange={handleValueChange}/>
+            <input className={styles.input}
+                   id="compound_freq_days"
+                   type="number"
+                   placeholder="How often in year is interest paid:"
+                   inputMode={"numeric"}
+                   min={1}
+                   max={365}
+                   value={compound_freq_days}
+                   step={1}
+                   required
+                   onChange={handleValueChange}/>
+            <input className={styles.input}
+                   id="deposit_duration_days"
+                   type="number"
+                   placeholder="Duration of deposit:"
+                   inputMode={"numeric"}
+                   min={1}
+                   value={deposit_duration_days}
+                   step={1}
+                   required
+                   onChange={handleValueChange}/>
+            <span className={styles.result}>{finalWealth !== null ? finalWealth : "0"} €</span>
           </div>
-          <div id="graph">
-            <h1>TODO: Graph</h1>
+          <div className={styles.graph}>
+            <h1 className={styles.h1}>TODO: Graph</h1>
           </div>
         </div>
       </main>
