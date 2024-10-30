@@ -3,6 +3,7 @@
 import styles from "./page.module.css";
 import {useState} from "react";
 import {Link} from "@nextui-org/link";
+import {Input} from "@nextui-org/input";
 
 export default function Home() {
   let [finalWealth, setFinalWealth] = useState(null);
@@ -36,10 +37,10 @@ export default function Home() {
             <input id="apy" type="string" placeholder="Yearly Interest Rate (APY)" value={apy} onChange={handleValueChange}/>
             <input id="compound_freq_days" type="string" placeholder="How often in year is interest paid" value={compound_freq_days} onChange={handleValueChange}/>
             <input id="deposit_duration_days" type="string" placeholder="Duration of deposit" value={deposit_duration_days} onChange={handleValueChange}/>
-            <span id="result">{finalWealth !== null ? finalWealth : "amount"}</span>
+            <span id="result">{finalWealth !== null ? finalWealth : "0"}</span>
           </div>
           <div id="graph">
-            {/*  TODO: Graph*/}
+            <h1>TODO: Graph</h1>
           </div>
         </div>
       </main>

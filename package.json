@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/input": "^2.2.5",
     "@nextui-org/link": "^2.0.35",
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",

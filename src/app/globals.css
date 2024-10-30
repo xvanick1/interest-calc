@@ -51,27 +51,25 @@ a {
     flex-direction: column;
     flex-wrap: nowrap;
     flex-grow: 1;
-    background-color: red;
+    background-color: transparent;
     min-width: 30vw;
     min-height: inherit;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
     input {
       color: var(--button-primary-hover);
       font-size: 1.5rem;
       height: 2rem;
-      margin: 0 30px;
+      margin-right: 80px;
       border-radius: 5px;
     }
 
     #result {
-      background-color: var(--foreground);
       border-radius: 5px;
-      margin: 0 30px;
+      margin-right: 80px;
       height: 40px;
       font-size: 30px;
-      padding: 0 15px;
-      color: var(--background);
+      color: #ffffff;
 
     }
 
@@ -82,8 +80,18 @@ a {
     flex-direction: row;
     flex-wrap: nowrap;
     flex-grow: 2;
-    background-color: blue;
+    border: 1px solid var(--foreground);
+    background-color: var(--button-secondary-hover);
+    border-radius: 5px;
     min-width: 50vw;
     min-height: inherit;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      color: #383838;
+      text-decoration: #1a1a1a;
+      font-family: var(--font-geist-sans);
+    }
   }
 }
