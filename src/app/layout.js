@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import "./globals.css";
+import "../styles/globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,6 +15,7 @@ const geistMono = localFont({
 export const metadata = {
   title: "Compound Interest Calculator",
   description: "Find out how interest on your initial deposit compounds",
+  icon: './favicon.ico',
 };
 
 export default function RootLayout({ children }) {
