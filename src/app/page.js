@@ -2,21 +2,23 @@
 
 import styles from "./page.module.css";
 import {useState} from "react";
-import {Link} from "@nextui-org/link";
-import {Input} from "@nextui-org/input";
+import Link from 'next/link'
+import Input from '@/components/Input/Input';
+import Picker from "@/components/Picker/Picker";
+import SelectInput from "@/components/SelectInput/SelectInput";
 
 export default function Home() {
   let [finalWealth, setFinalWealth] = useState(null);
-  let [deposit, setDeposit] = useState('');
-  let [apy, setApy] = useState('');
-  let [compound_freq_days, setCompound_freq_days] = useState('');
-  let [deposit_duration_days, setDeposit_duration_days] = useState('');
+  let [deposit, setDeposit] = useState(null);
+  let [apy, setApy] = useState(null);
+  let [compound_freq_days, setCompound_freq_days] = useState(null);
+  let [deposit_duration_days, setDeposit_duration_days] = useState(null);
 
   const handleValueChange = (event) => {
-    event.target.id === "deposit" ? setDeposit(event.target.value) : '';
-    event.target.id === "apy" ? setApy(event.target.value) : '';
-    event.target.id === "compound_freq_days" ? setCompound_freq_days(event.target.value) : '';
-    event.target.id === "deposit_duration_days" ? setDeposit_duration_days(event.target.value) : '';
+    event.target.id === "deposit" ? setDeposit(event.target.value) : null;
+    event.target.id === "apy" ? setApy(event.target.value) : null;
+    event.target.id === "compound_freq_days" ? setCompound_freq_days(event.target.value) : null;
+    event.target.id === "deposit_duration_days" ? setDeposit_duration_days(event.target.value) : null;
 
     calculateResult();
   }
@@ -33,48 +35,44 @@ export default function Home() {
         <h1>Let's get rich!</h1>
         <div className={styles.container}>
           <div className={styles.inputForm}>
-            <input
-                className={styles.input}
+            <Input
                 id="deposit"
-                type="number"
-                placeholder="Initial deposit:"
-                inputMode="decimal"
-                min={1}
+                label="Initial deposit"
+                placeholder="10 000"
+                inputType="number"
+                mode="decimal"
+                symbol="€"
                 value={deposit}
+                min={1}
                 step={0.01}
-                required
-                onChange={handleValueChange}/>
-            <input className={styles.input}
-                   id="apy"
-                   type="number"
-                   placeholder="Yearly Interest Rate (APY):"
-                   inputMode={"numeric"}
-                   min={0}
-                   value={apy}
-                   step={0.01}
-                   required
-                   onChange={handleValueChange}/>
-            <input className={styles.input}
-                   id="compound_freq_days"
-                   type="number"
-                   placeholder="How often in year is interest paid:"
-                   inputMode={"numeric"}
-                   min={1}
-                   max={365}
-                   value={compound_freq_days}
-                   step={1}
-                   required
-                   onChange={handleValueChange}/>
-            <input className={styles.input}
-                   id="deposit_duration_days"
-                   type="number"
-                   placeholder="Duration of deposit:"
-                   inputMode={"numeric"}
-                   min={1}
-                   value={deposit_duration_days}
-                   step={1}
-                   required
-                   onChange={handleValueChange}/>
+                />
+            <Input
+                id="apy"
+                label="Annual Interest Rate"
+                placeholder="3.7"
+                inputType="number"
+                mode="numeric"
+                symbol="%"
+                min={0}
+                value={apy}
+                step={0.01}
+                />
+            <Picker
+                id="compound_freq_days"
+                label="How often is interest paid"
+                value={compound_freq_days}
+                />
+            <SelectInput
+                id="deposit_duration_days"
+                label="Duration of deposit"
+                placeholder="30"
+                inputType="number"
+                mode="numeric"
+                min={1}
+                value={deposit_duration_days}
+                step={1}
+
+                />
             <span className={styles.result}>{finalWealth !== null ? finalWealth : "0"} €</span>
           </div>
           <div className={styles.graph}>
@@ -84,7 +82,7 @@ export default function Home() {
       </main>
       <footer className={styles.footer}>
         <p>Created by J.</p>
-        <p>Did you experience any weird behavior? <Link isExternal href="https://github.com/xvanick1/interest-calc/issues"> Let me know.</Link></p>
+        <p>Did you experience any weird behavior? <Link href="https://github.com/xvanick1/interest-calc/issues"> Let me know.</Link></p>
       </footer>
     </div>
   );
