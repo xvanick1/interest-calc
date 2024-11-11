@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-const Input = ({ id, label, placeholder, inputType, mode, value, min, step, symbol, onChange }) => {
+const Input = ({id, label, placeholder, inputType, mode, value, min, step, symbol, onChange}) => {
     return (
-        <div id={id} className={styles.container}>
-            <label
-                className={styles.label}>{label}</label>
+        <div className={styles.container}>
+            <label className={styles.label} htmlFor={id}>{label}</label>
             <div
                 className={styles.inputContainer}
-                style={{ "--input-symbol": `"${symbol || ' ' }"` }}>
+                style={{"--input-symbol": `"${symbol || ' '}"`}}>
                 <input
+                    id={id}
                     className={styles.input}
                     placeholder={placeholder}
                     type={inputType}
