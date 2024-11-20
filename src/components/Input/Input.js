@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import styles from './Input.module.css';
 
-const Input = ({id, label, placeholder, inputType, mode, value, min, step, symbol, onChange}) => {
+
+const Input = ({id, label, placeholder, inputType, mode, min, step, symbol, toParent}) => {
+    const [inputValue, setInputValue] = useState('');
+
+    useEffect(() => {
+        toParent(inputValue);
+    }, [inputValue]);
+
+    const handleInputChange = (value) => {
+        setInputValue(value);
+    }
+
     return (
         <div className={styles.container}>
             <label className={styles.label} htmlFor={id}>{label}</label>
@@ -14,10 +25,10 @@ const Input = ({id, label, placeholder, inputType, mode, value, min, step, symbo
                     placeholder={placeholder}
                     type={inputType}
                     inputMode={mode}
-                    value={value}
                     min={min}
                     step={step}
-                    onChange={onChange}/>
+                    value={inputValue}
+                    onChange={(event => handleInputChange(event.target.value))}/>
             </div>
         </div>
     );
