@@ -1,46 +1,55 @@
 "use client"
 
 import styles from "./page.module.css";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Input from "@/components/Input/Input";
 import Picker from "@/components/Picker/Picker";
 import SelectInput from "@/components/SelectInput/SelectInput";
 
-export default function Home() {
-    const [durationValue, setDurationValue] = useState("");
-    const [durationType, setDurationType] = useState("");
-    const [compoundRecurrency, setCompoundRecurrency] = useState("");
-    const [apy, setApy] = useState("");
-    const [depositValue, setDepositValue] = useState("");
-    const [finalWealth, setFinalWealth] = useState("0");
+const validateValue = (value) => {
+    const num = parseFloat(value);
+    return isNaN(num) || num < 0 ? 0 : num;
+}
 
-    const calculateResult = () => {
+export default function Home() {
+    const [depositValue, setDepositValue] = useState(0);
+    const [apy, setApy] = useState(0);
+    const [compoundRecurrency, setCompoundRecurrency] = useState(0);
+    const [durationValue, setDurationValue] = useState(0);
+    const [durationType, setDurationType] = useState(0);
+    const [finalWealth, setFinalWealth] = useState("");
+
+    useMemo(() => {
         const depositPeriod = durationValue * durationType;
-        if (depositValue && apy && compoundRecurrency && depositPeriod) {
-            setFinalWealth(depositValue * (1 + (apy / 100) / compoundRecurrency) ** (compoundRecurrency * depositPeriod));
-        }
-    };
+        let wealth = depositValue * (1 + apy / compoundRecurrency) ** (compoundRecurrency * (depositPeriod / 365));
+
+        wealth = validateValue(wealth);
+        setFinalWealth(wealth.toFixed(2));
+    }, [depositValue, apy, durationValue, durationType, compoundRecurrency]);
 
     const handleDepositChange = (value) => {
+        value = validateValue(value);
         setDepositValue(value);
-        calculateResult();
     }
 
     const handleApyChange = (value) => {
+        value = value / 100;
+        value = validateValue(value);
         setApy(value);
-        calculateResult();
     }
 
-    const handleRecurrencyChange = (recurrencyValue) => {
-        setCompoundRecurrency(recurrencyValue);
-        calculateResult();
+    const handleRecurrencyChange = (value) => {
+        value = validateValue(value);
+        setCompoundRecurrency(value);
     }
 
     const handleDataFromSelectInput = (inputValue, optionValue) => {
+        inputValue = validateValue(inputValue);
+        optionValue = validateValue(optionValue);
+
         setDurationValue(inputValue);
         setDurationType(optionValue);
-        calculateResult();
     };
 
     return (
@@ -79,14 +88,14 @@ export default function Home() {
                         <SelectInput
                             id="deposit_duration_days"
                             label="Duration of deposit"
-                            placeholder="30"
+                            placeholder={12}
                             inputType="number"
                             mode="numeric"
                             min={1}
                             step={1}
                             toParent={handleDataFromSelectInput}
                         />
-                        <span className={styles.result}>{finalWealth !== null ? finalWealth : "0"} €</span>
+                        <span className={styles.result}>{finalWealth} €</span>
                     </div>
                     <div className={styles.graph}>
                         <h1 className={styles.h1}>TODO: Graph</h1>

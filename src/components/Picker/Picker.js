@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
 import styles from './Picker.module.css';
 
 
 const Picker = ({id, label, toParent}) => {
-    const [recurrencyValue, setRecurrencyValue] = useState('');
-
-    useEffect(() => {
-        toParent(recurrencyValue);
-    }, [recurrencyValue]);
 
     const handleButtonChange = (value) => {
-        setRecurrencyValue(value);
+        toParent(value);
     }
 
     return (
@@ -30,7 +24,7 @@ const Picker = ({id, label, toParent}) => {
                 </div>
 
                 <div className={styles.optionContainer}>
-                    <input className={styles.input} type="radio" name="reccurency" id="radio-monthly" value={30}
+                    <input className={styles.input} type="radio" name="reccurency" id="radio-monthly" value={12}
                            onChange={(event) => handleButtonChange(event.target.value)}/>
                     <label className={styles.optionLabel} htmlFor="radio-monthly">Monthly</label>
                 </div>

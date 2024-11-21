@@ -1,16 +1,10 @@
-import React, { useState, useEffect} from 'react';
 import styles from './Input.module.css';
 
 
-const Input = ({id, label, placeholder, inputType, mode, min, step, symbol, toParent}) => {
-    const [inputValue, setInputValue] = useState('');
-
-    useEffect(() => {
-        toParent(inputValue);
-    }, [inputValue]);
+const Input = ({id, label, placeholder, inputType, mode, min, step, symbol, defaultValue, toParent}) => {
 
     const handleInputChange = (value) => {
-        setInputValue(value);
+        toParent(value);
     }
 
     return (
@@ -27,7 +21,7 @@ const Input = ({id, label, placeholder, inputType, mode, min, step, symbol, toPa
                     inputMode={mode}
                     min={min}
                     step={step}
-                    value={inputValue}
+                    defaultValue={defaultValue}
                     onChange={(event => handleInputChange(event.target.value))}/>
             </div>
         </div>
