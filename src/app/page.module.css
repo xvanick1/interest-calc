@@ -109,11 +109,6 @@
   min-height: inherit;
   align-items: center;
   justify-content: center;
-
-  .h1 {
-    color: #383838;
-    text-decoration: #1a1a1a;
-  }
 }
 
 a.primary {

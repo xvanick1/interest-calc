@@ -6,6 +6,7 @@ import Link from "next/link";
 import Input from "@/components/Input/Input";
 import Picker from "@/components/Picker/Picker";
 import SelectInput from "@/components/SelectInput/SelectInput";
+import Chart from "@/components/Chart/Chart";
 
 const validateValue = (value) => {
     const num = parseFloat(value);
@@ -98,7 +99,7 @@ export default function Home() {
                         <span className={styles.result}>{finalWealth} €</span>
                     </div>
                     <div className={styles.graph}>
-                        <h1 className={styles.h1}>TODO: Graph</h1>
+                        <Chart/>
                     </div>
                 </div>
             </main>
