@@ -39,8 +39,10 @@
       .optionLabel {
         display: inline-block;
         background-color: #3f3f46;
+        outline: 3px solid #69696c;
+        outline-offset: -2px;
         font-size: inherit;
-        line-height: 1.25rem;
+        line-height: 1.5rem;
         height: inherit;
         width: inherit;
         max-height: 3.5rem;
@@ -49,14 +51,14 @@
         color: #8b8b8f;
 
         &:hover {
-          outline: 1px solid var(--foreground);
+          outline: 3px solid var(--foreground);
           color: inherit;
           cursor: pointer;
         }
       }
 
       .input[type="radio"]:checked + label {
-        outline: 2px solid var(--foreground);
+        outline: 3px solid var(--foreground);
         color: inherit;
         font-weight: bolder;
       }
