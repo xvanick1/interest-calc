@@ -20,7 +20,10 @@ const Chart = ({ data }) => {
                 >
                     <XAxis dataKey="order" />
                     <YAxis />
-                    <Tooltip />
+                    <Tooltip
+                        wrapperStyle={{ borderRadius: '6px' }}
+                        contentStyle={{ backgroundColor: '#3f3f46', borderRadius: '6px', border: 'none'}}
+                    />
                     <Legend />
                     <Bar dataKey="initialDeposit" stackId="a" fill="#3688f4" />
                     <Bar dataKey="monthlyCompound" stackId="a" fill="#5caa5b" />
