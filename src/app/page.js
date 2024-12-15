@@ -21,9 +21,22 @@ export default function Home() {
     const [durationType, setDurationType] = useState(0);
     const [finalWealth, setFinalWealth] = useState("");
 
+    const [graphData, setGraphData] = useState(null);
+
     useMemo(() => {
         const depositPeriod = durationValue * durationType;
         let wealth = depositValue * (1 + apy / compoundRecurrency) ** (compoundRecurrency * (depositPeriod / 365));
+
+        let data = [];
+        for (let i = 1; i <= durationValue; i++) {
+            let order = i;
+            let initialDeposit = depositValue;
+            let monthlyWealth = (initialDeposit * (1 + apy / compoundRecurrency) ** (compoundRecurrency * ( i * durationType / 365))).toFixed(2);
+            let monthlyCompound = Math.abs(monthlyWealth - initialDeposit).toFixed(2);
+
+            data.push({order: order, initialDeposit: initialDeposit, monthlyCompound: monthlyCompound, monthlyWealth: monthlyWealth});
+        }
+        setGraphData(data);
 
         wealth = validateValue(wealth);
         setFinalWealth(wealth.toFixed(2));
@@ -99,7 +112,7 @@ export default function Home() {
                         <span className={styles.result}>{finalWealth} €</span>
                     </div>
                     <div className={styles.graph}>
-                        <Chart/>
+                        <Chart data={graphData}/>
                     </div>
                 </div>
             </main>
