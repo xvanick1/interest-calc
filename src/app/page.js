@@ -69,7 +69,7 @@ export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
-                <h1>Let's get rich!</h1>
+                <h1>Let's save money, wisely!</h1>
                 <div className={styles.container}>
                     <div className={styles.inputForm}>
                         <Input
