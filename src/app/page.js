@@ -1,7 +1,7 @@
 "use client"
 
 import styles from "./page.module.css";
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Input from "@/components/Input/Input";
 import Picker from "@/components/Picker/Picker";
@@ -23,7 +23,7 @@ export default function Home() {
 
     const [graphData, setGraphData] = useState(null);
 
-    useMemo(() => {
+    useEffect(() => {
         const depositPeriod = durationValue * durationType;
         let wealth = depositValue * (1 + apy / compoundRecurrency) ** (compoundRecurrency * (depositPeriod / 365));
 
