@@ -69,8 +69,10 @@
     }
   }
 
-  @media (max-width: 959px) {
+  @media (max-width: 960px) {
     .main {
+      padding: 3rem 4rem;
+
       .container {
         grid-template-columns: 1fr;
         grid-template-areas: "form";
@@ -79,6 +81,12 @@
           display: none;
         }
       }
+    }
+  }
+
+  @media (max-width: 450px) {
+    .main {
+      padding: 1.5rem 2rem;
     }
   }
 
