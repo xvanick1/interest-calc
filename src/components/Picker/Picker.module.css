@@ -27,6 +27,7 @@
     .optionContainer {
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       width: inherit;
       height: inherit;
@@ -37,18 +38,19 @@
       }
 
       .optionLabel {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         background-color: #3f3f46;
         outline: 3px solid #69696c;
         outline-offset: -2px;
         font-size: inherit;
-        line-height: 1.5rem;
         height: inherit;
         width: inherit;
         max-height: 3.5rem;
         padding: 0.5rem 0.75rem;
         border-radius: 12px;
         color: #8b8b8f;
+        line-height: 1;
 
         &:hover {
           outline: 3px solid var(--foreground);

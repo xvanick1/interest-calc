@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 const Chart = ({ data }) => {
 
     return (
-        <div className={styles.container}>
+        <>
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     data={data}
@@ -28,7 +28,7 @@ const Chart = ({ data }) => {
                     <Bar dataKey="monthlyCompound" stackId="a" fill="#5caa5b" radius={[3, 3, 0, 0] }/>
                 </BarChart>
             </ResponsiveContainer>
-        </div>
+        </>
     );
 }
 

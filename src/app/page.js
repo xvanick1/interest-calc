@@ -111,14 +111,14 @@ export default function Home() {
                         />
                         <span className={styles.result}>{finalWealth} €</span>
                     </div>
-                    <div className={styles.graph}>
+                    <div className={styles.chart}>
                         <Chart data={graphData}/>
                     </div>
                 </div>
             </main>
             <footer className={styles.footer}>
                 <p>Created by J.</p>
-                <p>Did you experience any weird behavior? <Link href="https://github.com/xvanick1/interest-calc/issues"> Let me know.</Link></p>
+                <p>Did you experience any weird behavior? <Link className={styles.link} href="https://github.com/xvanick1/interest-calc/issues"> Let me know.</Link></p>
             </footer>
         </div>
     );
